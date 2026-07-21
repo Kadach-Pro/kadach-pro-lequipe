@@ -119,6 +119,38 @@
 </div>
 
 <div class="filmstrip"></div>
+  <div class="form-card" style="max-width:960px; margin: 40px auto;">
+  <h2 style="text-align:center; margin-bottom:10px;">Devenir Acteur / Actrice</h2>
+  <p style="text-align:center; color:var(--muted); margin-bottom:24px;">Vous rêvez de jouer devant la caméra ? Postulez ici.</p>
+  <form id="castingForm">
+    <div class="field">
+      <label>Nom complet</label>
+      <input type="text" id="castFullName" required placeholder="Votre nom">
+    </div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="castEmail" required placeholder="votre@email.com">
+    </div>
+    <div class="field">
+      <label>Téléphone</label>
+      <input type="text" id="castPhone" placeholder="Votre numéro">
+    </div>
+    <div class="field">
+      <label>Rôle souhaité</label>
+      <select id="castRole">
+        <option value="Acteur">Acteur</option>
+        <option value="Actrice">Actrice</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Présentation / Expérience</label>
+      <textarea id="castMessage" required placeholder="Parlez-nous de vous..."></textarea>
+    </div>
+    <button type="submit" class="btn btn-gold" style="width:100%;">Envoyer ma candidature</button>
+    <p class="alt-link"><a id="castFallbackLink" href="mailto:kadachprolequipe@gmail.com">Cliquez ici si l'email ne s'ouvre pas</a></p>
+  </form>
+  <div id="castMsgBox"></div>
+</div>
 
 <footer class="credits">
   © 2026 <span class="prod-names">KADACH PRO &amp; ORYSKYLIAS77</span> — Okay, Ayiti
@@ -171,6 +203,39 @@
     a.click();
     document.body.removeChild(a);
   });
-</script>
+const castForm = document.getElementById('castingForm');
+const castMsgBox = document.getElementById('castMsgBox');
+const ADMIN_EMAIL_CAST = 'kadachprolequipe@gmail.com';
+
+castForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const entry = {
+    fullName: document.getElementById('castFullName').value.trim(),
+    email: document.getElementById('castEmail').value.trim(),
+    phone: document.getElementById('castPhone').value.trim(),
+    role: document.getElementById('castRole').value,
+    message: document.getElementById('castMessage').value.trim()
+  };
+  const subject = encodeURIComponent('Candidature ' + entry.role + ' - ' + entry.fullName);
+  const bodyLines = [
+    'NOM: ' + entry.fullName,
+    'EMAIL: ' + entry.email,
+    'TÉLÉPHONE: ' + (entry.phone || 'Non fourni'),
+    'RÔLE: ' + entry.role,
+    '',
+    'PRÉSENTATION:',
+    entry.message
+  ];
+  const body = encodeURIComponent(bodyLines.join('\n'));
+  const link = `mailto:${ADMIN_EMAIL_CAST}?subject=${subject}&body=${body}`;
+  document.getElementById('castFallbackLink').setAttribute('href', link);
+  castMsgBox.innerHTML = '<div class="msg">📧 Votre application email va s\'ouvrir — cliquez sur le lien si rien ne se passe.</div>';
+  const a = document.createElement('a');
+  a.href = link;
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+});</script>
 </body>
 </html>
