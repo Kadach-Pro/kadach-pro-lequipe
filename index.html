@@ -191,6 +191,17 @@ async function enskri(email, motDePase) {
     console.log("Enskripsyon reyisi:", data);
   }
 }
+  async function konekte(email, motDePase) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: motDePase
+  });
+  if (error) {
+    console.log("Erè:", error.message);
+  } else {
+    console.log("Konekte:", data);
+  }
+}
 </script>
 </body>
 </html>
