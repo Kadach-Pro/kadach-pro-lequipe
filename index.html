@@ -180,6 +180,17 @@
   const SUPABASE_KEY = "sb_publishable_92otdD2oUS0P83tXbmlnRA_CdOIDg_o";
 
   const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+async function enskri(email, motDePase) {
+  const { data, error } = await supabase.auth.signUp({
+    email: email,
+    password: motDePase
+  });
+  if (error) {
+    console.log("Erè:", error.message);
+  } else {
+    console.log("Enskripsyon reyisi:", data);
+  }
+}
 </script>
 </body>
 </html>
