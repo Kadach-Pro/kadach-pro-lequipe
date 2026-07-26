@@ -207,11 +207,33 @@ async function enskri(email, motDePase) {
   const { data, error } = await supabase.from('films').select('*');
   if (error) {
     console.log("Erè:", error.message);
-  } else {
-    console.log("Fim yo:", data);
-    // isit ou ka boukle sou 'data' pou afiche yo nan HTML
+    return;
   }
+
+  const conteneur = document.getElementById('listeFilms');
+
+  if (!data || data.length === 0) {
+    conteneur.innerHTML = '';
+    conteneur.style.display = 'none';
+    return;
+  }
+
+  conteneur.style.display = 'grid';
+  conteneur.innerHTML = '';
+
+  data.forEach(film => {
+    conteneur.innerHTML += `
+      <div class="film-card">
+        <img src="${film.image_url}" alt="${film.titre}">
+        <h3>${film.titre}</h3>
+        <p>${film.description}</p>
+        <p>Prix: ${film.prix_ticket} G</p>
+      </div>
+    `;
+  });
 }
+
+montreFilms();
 </script>
 </body>
 </html>
