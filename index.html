@@ -266,6 +266,27 @@ document.getElementById('boutonKonekte').addEventListener('click', async () => {
   await konekte(email, pass);
 });
 
+document.getElementById('boutonEnskri').addEventListener('click', async () => {
+  const non = document.getElementById('nonEnskri').value;
+  const prenon = document.getElementById('prenonEnskri').value;
+  const vil = document.getElementById('vilEnskri').value;
+  const email = document.getElementById('emailEnskri').value;
+  const pass = document.getElementById('passEnskri').value;
+  await enskri(email, pass, non, prenon, vil);
+});
+
+document.getElementById('montreEnskri').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('vueKonekte').style.display = 'none';
+  document.getElementById('vueEnskri').style.display = 'block';
+});
+
+document.getElementById('montreKonekte').addEventListener('click', (e) => {
+  e.preventDefault();
+  document.getElementById('vueEnskri').style.display = 'none';
+  document.getElementById('vueKonekte').style.display = 'block';
+});
+
 montreFilms();
   
 </script>
