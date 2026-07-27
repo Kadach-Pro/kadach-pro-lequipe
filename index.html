@@ -200,7 +200,7 @@
 <script>
   const SUPABASE_URL = "https://ckfblmczohgqwwjxtyos.supabase.co";
   const SUPABASE_KEY = "sb_publishable_92otdD2oUS0P83tXbmlnRA_CdOIDg_o";
-
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
   
   async function enskri(email, motDePase, non, prenon, vil) {
   const { data, error } = await supabase.auth.signUp({
