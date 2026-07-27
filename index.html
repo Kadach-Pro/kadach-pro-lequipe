@@ -291,7 +291,10 @@ document.getElementById('montreKonekte').addEventListener('click', (e) => {
 });
 
 montreFilms();
-  window.addEventListener('error', (e) => {
+  window.addEventListener('unhandledrejection', (e) => {
+  alert("ERÈ PROMISE: " + e.reason);
+});
+window.addEventListener('error', (e) => {
   alert("ERÈ JS: " + e.message);
 });
 </script>
