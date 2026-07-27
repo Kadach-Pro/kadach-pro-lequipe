@@ -163,11 +163,27 @@
     <a href="#" aria-label="TikTok">TikTok</a>
   </div>
 </footer>
-<div id="formKonekte">
-  <h2>Konekte</h2>
-  <input type="email" id="emailKonekte" placeholder="Email">
-  <input type="password" id="passKonekte" placeholder="Modpas">
-  <button id="boutonKonekte">Konekte</button>
+<div id="overlayKonekte" class="overlay-konekte">
+  <div class="konekte-box">
+    <div id="vueKonekte">
+      <h2>Konekte</h2>
+      <input type="email" id="emailKonekte" placeholder="Email">
+      <input type="password" id="passKonekte" placeholder="Modpas">
+      <button id="boutonKonekte">Konekte</button>
+      <p class="switch-link">Pa gen kont? <a href="#" id="montreEnskri">Enskri</a></p>
+    </div>
+
+    <div id="vueEnskri" style="display:none;">
+      <h2>Enskri</h2>
+      <input type="text" id="nonEnskri" placeholder="Non">
+      <input type="text" id="prenonEnskri" placeholder="Prenon">
+      <input type="text" id="vilEnskri" placeholder="Vil">
+      <input type="email" id="emailEnskri" placeholder="Email">
+      <input type="password" id="passEnskri" placeholder="Modpas">
+      <button id="boutonEnskri">Enskri</button>
+      <p class="switch-link">Ou gen kont deja? <a href="#" id="montreKonekte">Konekte</a></p>
+    </div>
+  </div>
 </div>
 <script>
   const navToggle = document.getElementById('navToggle');
