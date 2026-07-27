@@ -213,19 +213,24 @@ async function enskri(email, motDePase) {
     console.log("Enskripsyon reyisi:", data);
   }
 }
-  async function konekte(email, motDePase) {
-  const { data, error } = await supabase.auth.signInWithPassword({
+  async function enskri(email, motDePase, non, prenon, vil) {
+  const { data, error } = await supabase.auth.signUp({
     email: email,
-    password: motDePase
+    password: motDePase,
+    options: {
+      data: { non: non, prenon: prenon, vil: vil }
+    }
   });
   if (error) {
-  console.log("Erè:", error.message);
-  alert("Erè: " + error.message);
-} else {
-  console.log("Konekte:", data);
-  alert("Ou konekte avèk siksè!");
+    console.log("Erè:", error.message);
+    alert("Erè: " + error.message);
+  } else {
+    console.log("Enskripsyon reyisi:", data);
+    alert("Enskripsyon reyisi! Ou ka konekte kounye a.");
+    document.getElementById('vueEnskri').style.display = 'none';
+    document.getElementById('vueKonekte').style.display = 'block';
+  }
 }
-    }
   async function montreFilms() {
   const { data, error } = await supabase.from('films').select('*');
   if (error) {
