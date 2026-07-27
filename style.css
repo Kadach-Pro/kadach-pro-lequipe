@@ -189,3 +189,22 @@ input:focus, select:focus, textarea:focus {
 }
 textarea { resize: vertical; min-height: 90px; }
 .field { margin-bottom: 18px; }
+.overlay-konekte {
+  position: fixed; inset: 0; background: #0c0608;
+  z-index: 9999; display: flex; align-items: center; justify-content: center;
+}
+.konekte-box {
+  max-width: 360px; width: 90%; padding: 24px;
+  background: #1a0d0d; border: 1px solid #3a2020; border-radius: 12px; text-align: center;
+}
+.konekte-box h2 { color: #d4af37; margin-bottom: 16px; }
+.konekte-box input {
+  display: block; width: 100%; margin-bottom: 12px;
+  padding: 10px; border-radius: 6px; border: none; box-sizing: border-box;
+}
+.konekte-box button {
+  width: 100%; padding: 10px; background: #d4af37;
+  color: #1a0d0d; border: none; border-radius: 6px; font-weight: bold; cursor: pointer;
+}
+.switch-link { color: #ccc; margin-top: 12px; font-size: 14px; }
+.switch-link a { color: #d4af37; }
