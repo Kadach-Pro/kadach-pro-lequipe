@@ -203,10 +203,11 @@ async function enskri(email, motDePase) {
     password: motDePase
   });
   if (error) {
-    console.log("Erè:", error.message);
-  } else {
-    console.log("Konekte:", data);
-  }
+  console.log("Erè:", error.message);
+  alert("Erè: " + error.message);
+} else {
+  console.log("Konekte:", data);
+  alert("Ou konekte avèk siksè!");
 }
   async function montreFilms() {
   const { data, error } = await supabase.from('films').select('*');
