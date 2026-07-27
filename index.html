@@ -237,8 +237,14 @@ async function enskri(email, motDePase) {
     `;
   });
 }
+document.getElementById('boutonKonekte').addEventListener('click', async () => {
+  const email = document.getElementById('emailKonekte').value;
+  const pass = document.getElementById('passKonekte').value;
+  await konekte(email, pass);
+});
 
 montreFilms();
+  
 </script>
 </body>
 </html>
