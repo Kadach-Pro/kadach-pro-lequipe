@@ -220,6 +220,20 @@
     document.getElementById('vueKonekte').style.display = 'block';
   }
 }
+async function konekte(email, motDePase) {
+  const { data, error } = await supabase.auth.signInWithPassword({
+    email: email,
+    password: motDePase
+  });
+  if (error) {
+    console.log("Erè:", error.message);
+    alert("Erè: " + error.message);
+  } else {
+    console.log("Konekte:", data);
+    alert("Ou konekte avèk siksè!");
+    document.getElementById('overlayKonekte').style.display = 'none';
+  }
+}
   async function montreFilms() {
   const { data, error } = await supabase.from('films').select('*');
   if (error) {
